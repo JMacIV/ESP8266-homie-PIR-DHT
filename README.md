@@ -1,7 +1,7 @@
 # ESP8266-homie-PIR-DHT
 DHT/PIR sensor on NodeMCU using Homie and PlatformIO
 
-Currently uses Homie v3.0.1 [Homie 3.0.1](https://github.com/homieiot/convention/releases/tag/v3.0.1)
+Currently uses [Homie 3.0.1](https://github.com/homieiot/convention/releases/tag/v3.0.1)
 
 Project is built in PlatformIO, see below. 
 
@@ -33,6 +33,7 @@ PIR to GPIO12 (D6 on NodeMCU).
 
 ### DHT11 v DHT22
 This project is currently configured to use a DHT22 sensor. If you are using DHT11, you need to modify main.cpp:
+
 DHT22:
 ```#define DHTTYPE DHT22```
 
