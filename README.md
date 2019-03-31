@@ -1,11 +1,16 @@
 # ESP8266-homie-PIR-DHT
 DHT/PIR sensor on NodeMCU using Homie and PlatformIO
 
-Currently uses Homeie v3.0.1 [Homie 3.0.1](https://github.com/homieiot/convention/releases/tag/v3.0.1)
+Currently uses Homie v3.0.1 [Homie 3.0.1](https://github.com/homieiot/convention/releases/tag/v3.0.1)
 
 Project is built in PlatformIO, see below. 
 
 ## Setup
+### Hardware
+DHT22 to pin 4. If using DHT11, see DHT11 v DHT22 section below.
+
+PIR to pin 12.
+
 ### Using with PlatformIO
 
 [PlatformIO](http://platformio.org) is an open source ecosystem for IoT development with cross platform build system, library manager and full support for Espressif ESP8266 development. It works on the popular host OS: Mac OS X, Windows, Linux 32/64, Linux ARM (like Raspberry Pi, BeagleBone, CubieBoard).
@@ -15,6 +20,9 @@ Project is built in PlatformIO, see below.
 3. Add repo PlatformIO
 4. Make any changes you want
 5. Upload to NodeMCU chip
+
+### DHT11 v DHT22
+This project is currently configured to use a DHT22 sensor. If you need to change to DHT11, modify main.cpp to change DHTTYPE from DHT22 to DHT11
 
 ### Upload Firmware directly
 If you think my code looks good to go, you can download firmware.bin in "Builds" directory and upload that to your NodeMCU using something like espTool or NodeMCU Flasher. Google these.
