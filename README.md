@@ -5,11 +5,21 @@ Currently uses Homie v3.0.1 [Homie 3.0.1](https://github.com/homieiot/convention
 
 Project is built in PlatformIO, see below. 
 
+## Features
+- Automatically advertises what it does using Homie including units. 
+    - Motion
+    - Temperature
+    - Humidity
+- Temp and Humidity readings every 60 seconds (configurable by changing ```TEMPERATURE_INTERVAL```)
+- Motion info as detected (inlcuding OFF after 5 seconds, configurable by changing ```pause```)
+- Easy setup
+- Automatic Discovery in openHAB (>2.5) if MQTT bridge is already configured since uses Homie 3+
+
 ## Setup
 ### Hardware
-DHT22 to pin 4. If using DHT11, see DHT11 v DHT22 section below.
+DHT22 to GPIO4 (D2 on NodeMCU). If using DHT11, see [DHT11 v DHT22](#dht11-v-dht22) section below.
 
-PIR to pin 12.
+PIR to GPIO12 (D6 on NodeMCU).
 
 ### Using with PlatformIO
 
@@ -22,7 +32,12 @@ PIR to pin 12.
 5. Upload to NodeMCU chip
 
 ### DHT11 v DHT22
-This project is currently configured to use a DHT22 sensor. If you need to change to DHT11, modify main.cpp to change DHTTYPE from DHT22 to DHT11
+This project is currently configured to use a DHT22 sensor. If you are using DHT11, you need to modify main.cpp:
+DHT22:
+```#define DHTTYPE DHT22```
+
+DHT11:
+```#define DHTTYPE DHT11```
 
 ### Upload Firmware directly
 If you think my code looks good to go, you can download firmware.bin in "Builds" directory and upload that to your NodeMCU using something like espTool or NodeMCU Flasher. Google these.

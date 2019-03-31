@@ -6,17 +6,19 @@
 #define FW_NAME "dht-pir-esp-h301"
 #define FW_VERSION  "1.1"
 
+//DHT Section
 //Pin that the DHT sensor is connected to on ESP chip. Change DHTTYPE to DHT11 if appropriate
 #define DHTPIN 4
 #define DHTTYPE DHT22
 
-// Start a counter for serial logging and set the initial value to no motion 
-int counter = 0;
-int previousReading = LOW;
+const int TEMPERATURE_INTERVAL = 60000; //In millis. Change to increase or decrease temp/humidity intervals
+unsigned long last_temperature_sent = 0;
 
-/////////////////////////////
-//VARS
-//the time we give the sensor to calibrate (10-60 secs according to the datasheet)
+//PIR
+int pirPin = 12;    // the digital pin connected to the PIR sensor's output
+int ledPin = 16;    // the digital pin connected to built-in LED
+
+//the time we give the PIR sensor to calibrate (10-60 secs according to the datasheet)
 int calibrationTime = 30;        
 
 //the time when the sensor outputs a low impulse
@@ -26,14 +28,12 @@ long unsigned int lowIn;
 //before we assume all motion has stopped
 long unsigned int pause = 5000;  
 
+// Start a counter for serial logging and set the initial value to no motion 
+int counter = 0;
+int previousReading = LOW;
+
 boolean lockLow = true;
 boolean takeLowTime;  
-
-int pirPin = 12;    // the digital pin connected to the PIR sensor's output
-int ledPin = 16;    // the digital pin connected to built-in LED
-
-const int TEMPERATURE_INTERVAL = 60000;
-unsigned long last_temperature_sent = 0;
 
 DHT dht(DHTPIN, DHTTYPE);
 
